@@ -11,7 +11,7 @@ const allImages = transformData();
         // Values from the select boxes
         const method = document.getElementById('type-selector').value;
         let numberOfItems = document.getElementById('line-selector').value;
-        if (numberOfItems === "0") // All
+        if (numberOfItems === "0") // All images
             numberOfItems = allImages.length;
         else if (numberOfItems === "1") // 3 images
             numberOfItems = 3;
