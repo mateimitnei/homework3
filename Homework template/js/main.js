@@ -23,7 +23,8 @@ const allImages = transformData();
             document.querySelector('.first-group').classList.replace("hide","show");
             document.querySelector('.second-group').classList.replace("show","hide");
             document.querySelector('.third-group').classList.replace("show","hide");
-            var resultReplace = '<div class="container">';
+
+            firstBlock.innerHTML = '';
             for (let index = 0; index < numberOfItems; index++) {
                 const item = allImages[index];
                 const replaceItems =
@@ -35,15 +36,12 @@ const allImages = transformData();
                             <div class="text-muted">$date</div>\
                         </div>\
                     </div>';
-                resultReplace += replaceItems
+                firstBlock.innerHTML += replaceItems
                     .replace(/\$name/gi, item.name)
                     .replace("$url", item.url)
                     .replace("$description", item.description)
                     .replace("$date", item.date);
             }
-            resultReplace += '</div>';
-            firstBlock.innerHTML = resultReplace;
-            console.log("1");
         }
         // Strings method
         else if (method === "2") {
@@ -51,10 +49,10 @@ const allImages = transformData();
             document.querySelector('.second-group').classList.replace("hide","show");
             document.querySelector('.third-group').classList.replace("show","hide");
 
-            var resultStrings = '<div class="container">';
+            secondBlock.innerHTML = '';
             for (let index = 0; index < numberOfItems; index++) {
                 const item = allImages[index];
-                resultStrings +=
+                secondBlock.innerHTML +=
                     `<div class="col-sm-3 col-xs-6">\
                         <img src="${item.url}" alt="${item.name}" class="img-thumbnail">\
                         <div class="info-wrapper">\
@@ -64,18 +62,47 @@ const allImages = transformData();
                         </div>\
                     </div>`;
             }
-            resultStrings += '</div>';
-            secondBlock.innerHTML = resultStrings;
         }
         else if (method === "3") {
             document.querySelector('.first-group').classList.replace("show","hide");
             document.querySelector('.second-group').classList.replace("show","hide");
             document.querySelector('.third-group').classList.replace("hide","show");
+
+            thirdBlock.innerHTML = '';
+            for (let index = 0; index < numberOfItems; index++) {
+                const item = allImages[index];
+
+                const imageContainer = document.createElement("div");
+                imageContainer.classList.add("col-sm-3", "col-xs-6");
+                const image = document.createElement("img");
+                image.src = item.url;
+                image.alt = item.name;
+                image.classList.add("img-thumbnail");
+                const infoBox = document.createElement("div");
+                infoBox.classList.add("info-wrapper");
+                const title = document.createElement("div");
+                title.textContent = item.name;
+                title.classList.add("text-muted");
+                const description = document.createElement("div");
+                description.textContent = item.description;
+                description.classList.add("text-muted", "top-padding");
+                const date = document.createElement("div");
+                date.textContent = item.date;
+                date.classList.add("text-muted");
+
+                infoBox.appendChild(title);
+                infoBox.appendChild(description);
+                infoBox.appendChild(date);
+
+                imageContainer.appendChild(image);
+                imageContainer.appendChild(infoBox);
+
+                thirdBlock.appendChild(imageContainer);
+            }
         }
     }
 
     btn.addEventListener("click", init);
-
 })()
 
 function transformData() {

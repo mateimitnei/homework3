@@ -11,7 +11,7 @@ var data = [{
 	date : 1422153200637
 },{
 	url: "desktopwallpapers.org.ua/mini/201507/40068.jpg",
-	name: "DEWOO",
+	name: "DAEWOO",
 	id : 2,
 	params: {
 		status: true,
@@ -21,7 +21,7 @@ var data = [{
 	date : 1421153200637
 },{
 	url: "desktopwallpapers.org.ua/mini/201507/40067.jpg",
-	name: "FOLKSWAGEN",
+	name: "VOLKSWAGEN",
 	id : 3,
 	params: {
 		status: false,
@@ -51,7 +51,7 @@ var data = [{
 	date : 1402153200637
 },{
 	url: "desktopwallpapers.org.ua/mini/201507/40064.jpg",
-	name: "MERCEDESS",
+	name: "MERCEDES",
 	id : 6,
 	params: {
 		status: true,
